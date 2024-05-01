@@ -41,5 +41,26 @@ cargo build
 cargo run
 ```
 
+### Run using Docker
+#### Requirement:
+- [`docker`](https://docs.docker.com/get-docker/) - `v24.0.5,`
+
+#### Build Image
+```bash
+docker build -t verus-rpc-server .
+```
+
+#### Execute
+```bash
+docker run -it --network host --rm --name verus-rpc-server verus-rpc-server
+```
+> Network `host` is used to enable communication to the Verus Node
+
+##### Util Script
+The above can also be run using the utilty script.
+```bash
+chmod +x docker-build.sh && ./docker-build.sh
+```
+
 ### Contributing
 Contributions are welcome! Please feel free to submit a pull request.
