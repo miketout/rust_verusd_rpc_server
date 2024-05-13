@@ -1,4 +1,4 @@
-PORT=5555
+PORT=7777
 echo ""
 echo "++++++++++++++++++++++++++++++++++++++++++"
 echo " Make sure you're using the correct port! "
