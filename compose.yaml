@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  vrpc-server-verus:
+    image: pangzlab/verus-rpc-server
+    container_name: vrpc-server-verus
+    env_file:
+      - .env
+    network_mode: host
+  # vrpc-server-varrr:
+  #   image: pangzlab/verus-rpc-server
+  #   container_name: vrpc-server-varrr
+  #   env_file:
+  #     - .env.varrr
+  #   network_mode: host

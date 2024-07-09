@@ -1,0 +1,12 @@
+Dockerfile
+LICENSE
+README.md
+.gitignore
+build_docker.sh
+Conf.toml.sample
+test_connection.sh
+.env
+env.temp
+LICENSE
+README.md
+compose.yaml
