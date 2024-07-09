@@ -50,6 +50,7 @@ cargo run
 - [`Docker`](https://docs.docker.com/get-docker/) - `v24.0.5+`
 
 There are 2 ways you can build and run the image.
+Depending on your Linux installation, you might need to use `sudo` for running your `docker`.
 
 ### [ 📌 OPTION 1 of 2 ]
 <hr/>
@@ -62,7 +63,7 @@ docker build -t verus-rpc-server .
 
 ### Execute
 ```bash
-docker run --network host --rm --name verus-rpc-server verus-rpc-server
+docker run -d --network host --name verus-rpc-server verus-rpc-server
 ```
 > Network `host` is used to enable direct communication to the Verus Node
 
