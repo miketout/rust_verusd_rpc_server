@@ -5,9 +5,9 @@ COPY docker_startup.sh startup.sh
 RUN cargo update && cargo build --release
 
 FROM debian:bullseye-slim
-RUN apt-get update && apt-get install -y && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y libc6 && rm -rf /var/lib/apt/lists/*
 COPY --from=builder ./target/release/rust_verusd_rpc_server .
 COPY --from=builder ./Conf.docker.toml .
 COPY --from=builder ./startup.sh .
 
-CMD ["sh", "-c", "./startup.sh && ./rust_verusd_rpc_server"]
+CMD ["sh", "-c", "./startup.sh && cat Conf.toml && ./rust_verusd_rpc_server"]

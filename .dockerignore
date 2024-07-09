@@ -2,6 +2,11 @@ Dockerfile
 LICENSE
 README.md
 .gitignore
-build-docker.sh
+build_docker.sh
 Conf.toml.sample
-test-connection.sh
+test_connection.sh
+.env
+env.temp
+LICENSE
+README.md
+compose.yaml
