@@ -19,6 +19,4 @@ echo "Removing old image ..."
 sudo docker image rm $IMAGE_NAME
 
 echo "Building $IMAGE_OWNER/$IMAGE_NAME image with version: $VERSION"
-sudo docker build --no-cache -t $IMAGE_OWNER/$IMAGE_NAME:latest -t $IMAGE_OWNER/$IMAGE_NAME:$VERSION .
-#sudo docker run -d --rm --env-file .env -p 7777:7777 --add-host=host.docker.internal:host-gateway pangzlab/verus-rpc-server
-#docker run --env-file .env -p 7777:7777 --add-host=host.docker.internal:host-gateway pangzlab/verus-rpc-server
+sudo docker build --no-cache -f Dockerfile.v2 -t $IMAGE_OWNER/$IMAGE_NAME:latest -t $IMAGE_OWNER/$IMAGE_NAME:$VERSION .

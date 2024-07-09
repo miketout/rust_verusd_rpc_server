@@ -4,5 +4,5 @@ rpc_user = "{{RPC_NODE_USER}}"
 rpc_password = "{{RPC_NODE_PASSWORD}}"
 
 [rpc_server]
-port = "{{SERVER_PORT}}"
+port = {{SERVER_PORT}}
 addr = "{{SERVER_ADDRESS}}"

@@ -33,7 +33,7 @@ cargo build
 
 ### Usage
 
-1. Configure the server by editing the Conf.toml file
+1. Configure the server by editing the `Conf.toml` file
 
 2. Run the server:
 
@@ -43,7 +43,10 @@ cargo run
 
 ### Run using Docker
 #### Requirement:
-- [`docker`](https://docs.docker.com/get-docker/) - `v24.0.5,`
+- [`docker`](https://docs.docker.com/get-docker/) - `v24.0.5`(lower version might also work)
+
+#### OPTION 1 of 2
+<hr/>
 
 #### Build Image
 ```bash
@@ -54,13 +57,45 @@ docker build -t verus-rpc-server .
 ```bash
 docker run -it --network host --rm --name verus-rpc-server verus-rpc-server
 ```
-> Network `host` is used to enable communication to the Verus Node
+> Network `host` is used to enable direct communication to the Verus Node
 
-##### Util Script
-The above can also be run using the utilty script.
+#### Test Connection
+Update the port based on the value of `rpc_server.port` in `Conf.toml`.
+```
+./test_connection.sh
+```
+A JSON response without error like the following should appear
+```json
+{"result":{"bestblockhash":"000000000003d164827f0c01ad880e28ee06deb76b768bf7bd64048d6595215d","blocks":3125473,"chain":"main","chainid":"i5w5MuNik5NtLcYmNzcvaoixooEebB6MGV","chainstake":"8000000000000000000000000000000000000000000d79c190fa8bb155c3f4b1","chainwork":"00000000000000000000000000000000000000026e5624a3d7097c8bbba239ee","commitments":377270,"consensus":{"chaintip":"76b809bb","nextblock":"76b809bb"},"difficulty":2930135766945.239,"headers":3125473,"name":"VRSC","pruned":false,"size_on_disk":12285510877,"softforks":[{"enforce":{"found":4000,"required":750,"status":true,"window":4000},"id":"bip34","reject":{"found":4000,"required":950,"status":true,"window":4000},"version":2},{"enforce":{"found":4000,"required":750,"status":true,"window":4000},"id":"bip66","reject":{"found":4000,"required":950,"status":true,"window":4000},"version":3},{"enforce":{"found":4000,"required":750,"status":true,"window":4000},"id":"bip65","reject":{"found":4000,"required":950,"status":true,"window":4000},"version":4}],"upgrades":{"5ba81b19":{"activationheight":227520,"info":"See https://z.cash/upgrade/overwinter.html for details.","name":"Overwinter","status":"active"},"76b809bb":{"activationheight":227520,"info":"See https://z.cash/upgrade/sapling.html for details.","name":"Sapling","status":"active"}},"valuePools":[{"chainValue":24547.99070065,"chainValueZat":2454799070065,"id":"sprout","monitored":true},{"chainValue":531657.19804577,"chainValueZat":53165719804577,"id":"sapling","monitored":true}],"verificationprogress":1}}
+```
+
+#### OPTION 2 of 2
+<hr/>
+
+This allows customization of the image by enabling the use of an environment file.
+
+- Execute the following script. (this uses the `Dockerfile.v2`)
 ```bash
-chmod +x docker-build.sh && ./docker-build.sh
+chmod +x docker_build.sh && ./docker_build.sh v0.0.1
+```
+
+- Copy the `env.temp` then rename it to `.env`
+- Update the values of `.env` file
+- Run the image
+
+> Using docker
+```bash
+docker run --network host --name vrsc-rpc-server --env-file .env pangzlab/verus-rpc-server
+```
+
+> Using docker-compose
+
+- Update the value of `env_file` of `compose.yaml` for the configuration to use.
+- `docker-compose` is the suggested way as you can setup multiple rpc-servers instantly with different environment file.
+```bash
+docker compose up
 ```
 
 ### Contributing
 Contributions are welcome! Please feel free to submit a pull request.
+
