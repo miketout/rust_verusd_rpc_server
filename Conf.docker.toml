@@ -1,0 +1,8 @@
+[verus_node]
+rpc_url = "{{RPC_NODE_URL}}"
+rpc_user = "{{RPC_NODE_USER}}"
+rpc_password = "{{RPC_NODE_PASSWORD}}"
+
+[rpc_server]
+port = {{SERVER_PORT}}
+addr = "{{SERVER_ADDRESS}}"

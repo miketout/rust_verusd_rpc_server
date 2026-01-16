@@ -1,6 +1,8 @@
-rpc_url = "RPC_URL:PORT"
-rpc_user = "RPC_USER"
-rpc_password = "RPC_PASSWORD"
+[verus_node]
+rpc_url = "127.0.0.1:27486"
+rpc_user = "verusdesktop"
+rpc_password = "password"
 
-server_port = SERVER_PORT
-server_addr = "ADDRESS_TO_BIND_TO"
+[rpc_server]
+port = 7777
+addr = "127.0.0.1"

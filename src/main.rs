@@ -151,12 +151,12 @@ async fn main() {
     
     settings.merge(config::File::with_name("Conf")).expect("Failed to open configuration file");
 
-    let url = settings.get_str("rpc_url").expect("Failed to read 'rpc_url' from configuration");
-    let user = settings.get_str("rpc_user").expect("Failed to read 'rpc_user' from configuration");
-    let password = settings.get_str("rpc_password").expect("Failed to read 'rpc_password' from configuration");
+    let url = settings.get_str("verus_node.rpc_url").expect("Failed to read 'verus_node.rpc_url' from configuration");
+    let user = settings.get_str("verus_node.rpc_user").expect("Failed to read 'verus_node.rpc_user' from configuration");
+    let password = settings.get_str("verus_node.rpc_password").expect("Failed to read 'verus_node.rpc_password' from configuration");
     
-    let port = settings.get::<u16>("server_port").expect("Failed to read 'server_port' from configuration");
-    let server_addr = settings.get_str("server_addr").expect("Failed to read 'server_addr' from configuration");
+    let port = settings.get::<u16>("rpc_server.port").expect("Failed to read 'rpc_server.port' from configuration");
+    let server_addr = settings.get_str("rpc_server.addr").expect("Failed to read 'rpc_server.addr' from configuration");
 
     let addr = (server_addr.parse::<std::net::IpAddr>().unwrap(), port).into();
 

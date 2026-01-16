@@ -1,0 +1,8 @@
+[verus_node]
+rpc_url = "127.0.0.1:27486"
+rpc_user = "user"
+rpc_password = "fsadfasdfsay8D6Yfsadfasdfsdfsadfsadfsd23"
+
+[rpc_server]
+port = 7777
+addr = "127.0.0.1"
